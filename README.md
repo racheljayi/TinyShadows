@@ -1,5 +1,6 @@
 # TinyShadows
 *Play this game on itch.io [here](https://arjayi.itch.io/tiny-shadows)*
+*(Due to upstream bugs with SharedArrayBuffer and WebGL 2.0, this project cannot run in-browser Safari or Chrome on macOS)*
 
 Tiny Shadows is a two-player 2D platformer game around 10 minutes long built in the [Godot 4](https://godotengine.org) engine. It was solo developed for the [2023 GMTK Game Jam](https://itch.io/jam/gmtk-2023). It is available to be played in-browser or as a downloadable macOS app on itch.io. 
 
