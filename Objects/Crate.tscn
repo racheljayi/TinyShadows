@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Scripts/ObjectScripts/Crate.gd" id="1_1gnk8"]
+[ext_resource type="Texture2D" uid="uid://pkob7yuvksgr" path="res://Assets/Objects/Crate/Crate1.png" id="1_o6s4e"]
+[ext_resource type="Texture2D" uid="uid://cdlkt2uyd08dp" path="res://Assets/Objects/Crate/Crate2.png" id="2_ti6cx"]
+[ext_resource type="Texture2D" uid="uid://bar0t1or5budv" path="res://Assets/Objects/Crate/Crate3.png" id="3_70be5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_720ni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o6s4e")
+}],
+"loop": true,
+"name": &"crate1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ti6cx")
+}],
+"loop": true,
+"name": &"crate2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_70be5")
+}],
+"loop": true,
+"name": &"crate3",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0skb8"]
+size = Vector2(16, 15)
+
+[node name="Crate" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 23
+mass = 0.3
+script = ExtResource("1_1gnk8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_720ni")
+animation = &"crate3"
+
+[node name="PushableCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_0skb8")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/ObjectScripts/PlatformL.gd" id="1_budfu"]
+[ext_resource type="Texture2D" uid="uid://batvxb047qol4" path="res://Assets/Objects/PlatformL.png" id="1_gurv0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i1y6"]
+size = Vector2(32, 16)
+
+[node name="PlatformL" type="CharacterBody2D"]
+script = ExtResource("1_budfu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gurv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2i1y6")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/ObjectScripts/WallL.gd" id="1_b5s8p"]
+[ext_resource type="Texture2D" uid="uid://b53qyt5qhahsg" path="res://Assets/Objects/WallL.png" id="2_lbfw2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04453"]
+size = Vector2(16, 96)
+
+[node name="WallL" type="CharacterBody2D"]
+script = ExtResource("1_b5s8p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lbfw2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_04453")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true

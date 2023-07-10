@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Texture2D" uid="uid://ltl0qksgwytp" path="res://Assets/Objects/Button/Btn1-2.png" id="1_3dokt"]
+[ext_resource type="Script" path="res://Scripts/ObjectScripts/Button.gd" id="1_a6bin"]
+[ext_resource type="Texture2D" uid="uid://b5k2ny4k2mjqx" path="res://Assets/Objects/Button/Btn1-1.png" id="2_tk7tf"]
+[ext_resource type="Texture2D" uid="uid://cfyhb2oscwymd" path="res://Assets/Objects/Button/Btn2-2.png" id="3_ul7gb"]
+[ext_resource type="Texture2D" uid="uid://bwq0fhx2q66c1" path="res://Assets/Objects/Button/Btn2-1.png" id="4_hwqdp"]
+[ext_resource type="Texture2D" uid="uid://c3ckpkw1jkyaq" path="res://Assets/Objects/Button/Btn3-2.png" id="5_5aysr"]
+[ext_resource type="Texture2D" uid="uid://dtt3ahgmrw6b3" path="res://Assets/Objects/Button/Btn3-1.png" id="6_s2obj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ffx2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3dokt")
+}],
+"loop": true,
+"name": &"button1-down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tk7tf")
+}],
+"loop": true,
+"name": &"button1-up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ul7gb")
+}],
+"loop": true,
+"name": &"button2-down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hwqdp")
+}],
+"loop": true,
+"name": &"button2-up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5aysr")
+}],
+"loop": true,
+"name": &"button3-down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_s2obj")
+}],
+"loop": true,
+"name": &"button3-up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npxpw"]
+size = Vector2(16, 10)
+
+[node name="Button" type="Area2D"]
+collision_mask = 22
+script = ExtResource("1_a6bin")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6ffx2")
+animation = &"button1-down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_npxpw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

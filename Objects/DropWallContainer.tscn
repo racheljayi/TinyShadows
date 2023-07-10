@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Texture2D" uid="uid://cpko86305rhh8" path="res://Assets/Objects/Wall.png" id="1_01ynv"]
+[ext_resource type="Script" path="res://Scripts/ObjectScripts/DropWall.gd" id="1_oe4eu"]
+[ext_resource type="Script" path="res://Scripts/ObjectScripts/DropWallContainer.gd" id="1_uk8mn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21qsu"]
+size = Vector2(16, 48)
+
+[sub_resource type="Animation" id="Animation_gx7hp"]
+resource_name = "move_up"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_ytioo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_8fpln"]
+resource_name = "move_down"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -48), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lu8pe"]
+_data = {
+"RESET": SubResource("Animation_ytioo"),
+"move_down": SubResource("Animation_8fpln"),
+"move_up": SubResource("Animation_gx7hp")
+}
+
+[node name="DropWallContainer" type="Node2D"]
+script = ExtResource("1_uk8mn")
+
+[node name="DropWall" type="AnimatableBody2D" parent="."]
+position = Vector2(0, -48)
+script = ExtResource("1_oe4eu")
+
+[node name="Sprite2D" type="Sprite2D" parent="DropWall"]
+texture = ExtResource("1_01ynv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropWall"]
+shape = SubResource("RectangleShape2D_21qsu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DropWall"]
+libraries = {
+"": SubResource("AnimationLibrary_lu8pe")
+}
+
+[connection signal="switched" from="." to="DropWall" method="_on_drop_wall_container_switched"]
